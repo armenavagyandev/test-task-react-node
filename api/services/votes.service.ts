@@ -38,15 +38,22 @@ class VotesService {
     };
   }
 
-  async delete(id: number, ip: string): Promise<void> {
+  async delete(id: number, ip: string): Promise<Vote> {
+    const [rows] = await pool.query<RowDataPacket[]>(
+      `SELECT * FROM votes WHERE idea_id = ? AND ip_address = ?`,
+      [id, ip],
+    );
+
     const [result] = await pool.query<ResultSetHeader>(
-      `DELETE FROM votes WHERE id = ? AND ip_address = ?`,
+      `DELETE FROM votes WHERE idea_id = ? AND ip_address = ?`,
       [id, ip],
     );
 
     if (result.affectedRows === 0) {
       throw ApiError.Error(404, "Vote not found");
     }
+
+    return rows?.[0] as Vote;
   }
 
   getIP(req: express.Request<unknown, unknown, unknown>) {

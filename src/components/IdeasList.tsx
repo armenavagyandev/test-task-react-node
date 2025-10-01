@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ApiClient from "utils/api/api-client";
 import { Idea } from "utils/types/idea";
 import IdeaItem from "components/IdeaItem";
+import { ToastContainer } from "react-toastify";
 
 const IdeasList = () => {
   const [ideas, setIdeas] = useState<Idea[]>([]);
@@ -15,6 +16,7 @@ const IdeasList = () => {
       {ideas.map((idea) => (
         <IdeaItem key={idea.id} idea={idea} setIdeas={setIdeas} />
       ))}
+      <ToastContainer />
     </div>
   );
 };

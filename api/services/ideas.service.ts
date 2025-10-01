@@ -29,7 +29,9 @@ class IdeasService {
       id: row.id,
       title: row.title,
       votes: row.votes.filter(Boolean),
-      is_voted: row.votes.some((item) => item.ip_address === ip),
+      is_voted: row.votes
+        .filter(Boolean)
+        .some((item) => item.ip_address === ip),
     }));
   }
 }

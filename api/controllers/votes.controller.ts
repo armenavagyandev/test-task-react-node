@@ -32,8 +32,9 @@ class VotesController {
 
       const ip = VotesService.getIP(req);
 
-      await VotesService.delete(Number(id), ip);
-      res.status(204).send();
+      const result = await VotesService.delete(Number(id), ip);
+
+      res.status(200).send(VoteResource.format(result));
     } catch (err) {
       next(err);
     }
