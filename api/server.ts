@@ -7,8 +7,6 @@ import ErrorMiddleware from "./middlewares/error.middleware.ts";
 
 dotenv.config();
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
