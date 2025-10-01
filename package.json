@@ -10,7 +10,9 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "start": "yarn build && node ./api/dist/server.js",
-    "start:dev": "concurrently \"yarn server\" \"yarn client\""
+    "start:dev": "concurrently \"yarn server\" \"yarn client\"",
+    "db:migrate": "ts-node ./api/db/migrate.ts",
+    "db:seed": "ts-node ./api/db/seed.ts"
   },
   "dependencies": {
     "dotenv": "^17.2.3",
@@ -23,6 +25,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
+    "@types/dotenv": "^8.2.3",
     "@types/express": "^5.0.3",
     "@types/react": "^19.1.13",
     "@types/react-dom": "^19.1.9",
