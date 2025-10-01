@@ -15,17 +15,23 @@
     "db:seed": "ts-node ./api/db/seed.ts"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.1.13",
+    "axios": "^1.12.2",
     "dotenv": "^17.2.3",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
     "express": "^5.1.0",
+    "lucide-react": "^0.544.0",
     "mysql2": "^3.15.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "tailwindcss": "^4.1.13",
+    "vite-tsconfig-paths": "^5.1.4",
     "yup": "^1.7.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
+    "@types/axios": "^0.14.4",
     "@types/dotenv": "^8.2.3",
     "@types/express": "^5.0.3",
     "@types/react": "^19.1.13",

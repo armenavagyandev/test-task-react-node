@@ -2,7 +2,7 @@ import { pool } from "../db/index.ts";
 import type { Idea } from "../resources/idea.resource.ts";
 
 class IdeasService {
-  async index() {
+  async index(ip: string) {
     const [rows] = await pool.query(`
       SELECT
       ideas.id,
@@ -25,10 +25,11 @@ class IdeasService {
       ORDER BY ideas.id
     `);
 
-    return rows.map((row: Idea) => ({
+    return (rows as Idea[]).map((row) => ({
       id: row.id,
       title: row.title,
       votes: row.votes.filter(Boolean),
+      is_voted: row.votes.some((item) => item.ip_address === ip),
     }));
   }
 }

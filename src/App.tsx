@@ -1,11 +1,7 @@
-function App() {
-  return (
-    <>
-      Test
-      <p></p>
-      <span></span>
-    </>
-  );
-}
+import IdeasList from "components/IdeasList";
+
+const App = () => {
+  return <IdeasList />;
+};
 
 export default App;

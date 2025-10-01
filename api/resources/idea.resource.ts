@@ -4,6 +4,7 @@ export type Idea = {
   id: number;
   title: string;
   votes: Vote[];
+  is_voted: boolean;
 };
 
 class IdeaResource {
@@ -12,6 +13,7 @@ class IdeaResource {
       id: idea.id,
       title: idea.title,
       votes: idea.votes ?? null,
+      is_voted: idea.is_voted,
     };
   }
 

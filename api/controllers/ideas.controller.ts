@@ -2,19 +2,20 @@ import express from "express";
 import IdeasService from "../services/ideas.service.ts";
 import IdeaResource from "../resources/idea.resource.ts";
 import type { Idea } from "../resources/idea.resource.ts";
+import VotesService from "../services/votes.service.ts";
 
 class IdeasController {
   async index(
-    _: express.Request,
+    req: express.Request,
     res: express.Response,
     next: express.NextFunction,
   ) {
     try {
-      const ideas = await IdeasService.index();
+      const ip = VotesService.getIP(req);
 
-      res.send({
-        data: IdeaResource.collection(ideas as Idea[]),
-      });
+      const ideas = await IdeasService.index(ip);
+
+      res.send(IdeaResource.collection(ideas as Idea[]));
     } catch (err) {
       next(err);
     }
